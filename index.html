@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Alura</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+  <h1 class="titulo">Código Secreto </h1>
+
+  <main class="main">
+    <section class="form box">
+
+      <label for="input-texto" class="textoinput">Apenas letras minúsculas, sem acento</label>
+      <input class="text-input" type="text" name="input-texto" id="input-texto" placeholder="insira o texto aqui" autocomplete="off"/>
+      <input class="btn" type="submit" value="criptografar!" id="btn-cripto">
+      <input class="btn" type="submit" value="descriptografar!" id="btn-descripto">
+      <input class="btn" type="submit" value="Limpar" id="btn-limpar">
+
+
+    </section>
+
+    <section class="msg box">
+      <h2 class="mensagem">Mensagem:</h2>
+      <input class="text-input" type="text" id="msg" autocomplete="off"></input>
+      <input class="btn" type="submit" value="Copiar" id="btn-copy">
+      <input class="btn" type="submit" value="Limpar" id="btn-clear">
+    </section>
+  </main>
+  <footer class="rdp">
+
+        <p class="texto-rodape">Leonardo Franco Lima</p> <br>
+        <p class="texto-rodape">E-mail: lleofranco11@gmail.com</p>
+
+  </footer>
+
+  <script>
+        function criptografa() {
+
+              // pega o texto digitado.
+              var input = document.getElementById('input-texto');
+              var texto = ""
+              texto = input.value;
+              var textoDigi = texto.toLowerCase();
+
+
+              // coloca cada letra do texto em um indice de uma array.
+              var textoDivi = textoDigi.split("")
+              var textoCripto = textoDivi.toString();
+
+
+              // lógica da criptografia.
+              var trocaLetras = textoCripto.replaceAll('e', 'enter');
+              trocaLetras = trocaLetras.replaceAll('i', 'imes');
+              trocaLetras = trocaLetras.replaceAll('a', 'ai');
+              trocaLetras = trocaLetras.replaceAll('o', 'ober');
+              trocaLetras = trocaLetras.replaceAll('u', 'ufat');
+              trocaLetras = trocaLetras.replaceAll(',', '');
+
+
+              console.log(trocaLetras);
+
+              // captura o input e mostra o resultado nele
+
+              var input2 = document.getElementById('msg');
+              input2.value = trocaLetras;
+
+              // botão copiar
+              document.getElementById("btn-copy").addEventListener("click", function() {
+
+                  document.getElementById("msg").select();
+                  document.execCommand('copy')
+
+              });
+
+          }
+
+
+        function descriptografa() {
+
+            var input = document.getElementById('input-texto');
+            var textoPdescri = input.value;
+
+            var textoDivi = textoPdescri.split("")
+            var textoDescripto = textoDivi.toString();
+
+            var input = document.getElementById('input-texto');
+            var textoPdescri = input.value;
+
+            var textoDivi = textoPdescri.split("")
+            var textoDescripto = textoDivi.toString();
+
+            textoDescripto = textoDescripto.replaceAll(",","")
+            var trocaLetras = textoDescripto.replaceAll('imes', 'i');
+            trocaLetras = trocaLetras.replaceAll('ober', 'o');
+            trocaLetras = trocaLetras.replaceAll('enter', 'e');
+            trocaLetras = trocaLetras.replaceAll('ai', 'a');
+            trocaLetras = trocaLetras.replaceAll('ufat', 'u');
+            trocaLetras = trocaLetras.replaceAll(',', '');
+
+            // captura o input e mostra o resultado nele
+            var input2 = document.getElementById('msg');
+            input2.value = trocaLetras;
+
+
+        }
+
+        function limpar() {
+
+            var input = document.getElementById('msg');
+            input.value = ''
+
+        }
+
+        function limpar2() {
+
+            var input = document.getElementById('input-texto');
+            input.value = ''
+
+        }
+        document.getElementById('btn-cripto').onclick = criptografa;
+
+        document.getElementById('btn-descripto').onclick = descriptografa;
+
+        document.getElementById('btn-clear').onclick = limpar;
+
+        document.getElementById('btn-limpar').onclick = limpar2;
+
+
+
+  </script>
+</body>
+
+</html>
